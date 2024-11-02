@@ -12,7 +12,7 @@ namespace _13._1
         protected int nroOrden;
         DateTime fechaHora;
 
-        public abstract int VerNro();
-        public abstract DateTime VerFechaHora();
+        public int VerNro() { return nroOrden; }
+        public DateTime VerFechaHora() { return fechaHora; }
     }
 }

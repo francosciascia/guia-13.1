@@ -15,16 +15,7 @@ namespace _13._1
         public Denuncia (Vehiculo asegurado)
         {
             dominio = asegurado;
-        }
-
-        public override int VerNro()
-        {
-            return 1234;
-        }
-
-        public override DateTime VerFechaHora()
-        {
-            return DateTime.Now;
+            nroOrden = numero++;
         }
     }
 }

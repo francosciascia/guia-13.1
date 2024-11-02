@@ -29,10 +29,10 @@ namespace _13._1
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-       //    openFileDialog1.Filter = "Archivos .csv |*.csv";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+           saveFileDialog1.Filter = "Archivos .csv |*.csv";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
 
-                string path = openFileDialog1.FileName;
+                string path = saveFileDialog1.FileName;
 
                 FileStream fs = null;
                 StreamWriter sw = null;
@@ -42,7 +42,7 @@ namespace _13._1
                 a.ListaAtendidos.Add(c);
                 try
                 {
-                    fs = new FileStream(path, FileMode.Open, FileAccess.Write);
+                    fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
                     sw = new StreamWriter(fs);
                     foreach (Ticket t in a.ListaAtendidos)
                     {
@@ -62,9 +62,8 @@ namespace _13._1
                 catch (Exception ex) { }
                 finally
                 {
-                    if (fs != null) { fs.Close(); }
-
                     if (sw != null) { sw.Close(); }
+                    if (fs != null) { fs.Close(); }
                 }
 
             }
